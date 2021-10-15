@@ -4,7 +4,10 @@ let body = document.querySelector("body");
 let border = document.querySelector(".border");
 let h1 = document.querySelector("h1");
 
+let timer;
+
 let bmiCalc = () => {
+  clearInterval(timer);
   let height = document.querySelector("#height").value;
   let weight = document.querySelector("#weight").value;
   let bmi = Math.round((weight / height ** 2) * 10) / 10;
@@ -12,7 +15,7 @@ let bmiCalc = () => {
 
   if (height.length && weight.length) {
     let output = 0;
-    const timer = setInterval(() => {
+    timer = setInterval(() => {
       userBMI.textContent = output.toFixed(1);
       if (output.toFixed(1) == bmi) {
         clearInterval(timer);
